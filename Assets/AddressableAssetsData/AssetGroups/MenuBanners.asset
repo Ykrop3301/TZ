@@ -17,6 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f49eb703fec286540b9157cb64663a44
   m_SerializeEntries:
+  - m_GUID: 242e45d18cb5635409654e0b06fd272c
+    m_Address: GalleryCell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a400d6397eeed7246844ac1045179231
     m_Address: Assets/TZ/Data/Prefabs/Menu/Banners/BannerSimpleArt.prefab
     m_ReadOnly: 0

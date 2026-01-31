@@ -15,6 +15,11 @@ namespace Menu.Banners
         [SerializeField] private float _swipeCooldown = 5f;
         [SerializeField] private List<Transform> _activeVisualDots;
         [SerializeField] private Transform _activeDot;
+        [SerializeField] private Transform _leftBorder;
+        [SerializeField] private Transform _rightBorder;
+        [SerializeField] private Transform _upBorder;
+        [SerializeField] private Transform _downBorder;
+
 
         private IAssetsProvider _assetsProvider;
         private List<GameObject> _banners;
@@ -23,6 +28,7 @@ namespace Menu.Banners
 
         private float _currentTime = 0f;
         private Vector2 _startTouchPosition;
+        private bool _swipeStarted = false;
         private float _swipeThreshold = 50f;
 
         public override async UniTask Initialize(IAssetsProvider assetsProvider)
@@ -71,10 +77,15 @@ namespace Menu.Banners
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    _startTouchPosition = touch.position;
+                    if (IsIn(touch.position))
+                    {
+                        _startTouchPosition = touch.position;
+                        _swipeStarted = true;
+                    }
+                    else _swipeStarted = false;
                 }
 
-                if (touch.phase == TouchPhase.Ended)
+                if (_swipeStarted && touch.phase == TouchPhase.Ended)
                 {
                     var swipeDelta = (Vector2)(touch.position - _startTouchPosition);
 
@@ -90,6 +101,14 @@ namespace Menu.Banners
                     }
                 }
             }
+        }
+
+        private bool IsIn(Vector2 position)
+        {
+            return position.x > _leftBorder.position.x &&
+                position.x < _rightBorder.position.x &&
+                position.y < _upBorder.position.y &&
+                position.y > _downBorder.position.y;
         }
 
         private void CheckAutoSwipe()
