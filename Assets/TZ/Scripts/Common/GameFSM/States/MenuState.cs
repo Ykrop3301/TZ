@@ -20,7 +20,7 @@ namespace Common.GameFSM
 
         public async UniTask Enter()
         {
-            await PrepareMenu();
+            //await PrepareMenu();
             await _curtain.Hide();
         }
 

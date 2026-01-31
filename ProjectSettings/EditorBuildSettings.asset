@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TZ/Scenes/MenuScene.unity
     guid: 36cfa5b37fdbbd54085631506f1c65fc
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 58481b14ed1319349a294944c6343189, type: 2}
