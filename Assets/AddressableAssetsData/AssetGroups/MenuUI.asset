@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MenuUI
+  m_EditorClassIdentifier: 
+  m_GroupName: MenuUI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 996fb57f9a6163d4799223f1eb160fed
+  m_SerializeEntries:
+  - m_GUID: 40e212a3f1ee484438ba5316d0295780
+    m_Address: Assets/TZ/Data/Prefabs/Menu/GalleryCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MenuUI
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53f42ae1ea72854429daba5ca1001331
+    m_Address: Assets/TZ/Data/Prefabs/Menu/BannersCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MenuUI
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4aa5327603d41ae4196b49e55d876732, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: bc4e7b4ea5aabcd40bce71cf9c38eef3, type: 2}
+    - {fileID: 11400000, guid: 6ed2613852ca6174a9b0dc5104e81a79, type: 2}
