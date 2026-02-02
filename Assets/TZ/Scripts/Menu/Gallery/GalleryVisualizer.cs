@@ -9,6 +9,8 @@ namespace Menu.Gallery
 {
     public class GalleryVisualizer : MenuElement
     {
+        [SerializeField] private PicturePopup _picturePopup;
+        [SerializeField] private PremiumPopup _premiumPopup;
         [SerializeField] private Transform _topPoint;
         [SerializeField] private int _startCellsCount = 10;
         [SerializeField] private Transform _content;
@@ -48,17 +50,19 @@ namespace Menu.Gallery
                 _cellsCount--;
                 return;
             }
+
             AsyncInstantiateOperation<GalleryCell> handle = GameObject.InstantiateAsync(_galleryCellPrefab, 1, _content);
             await handle;
             newCell = handle.Result[0];
             _cells.Add(newCell);
-
-            newCell.Init(sprite, _topPoint.position);
-            newCell.OnOverScreen.Subscribe(_ =>
+            int cellId = _cells.IndexOf(newCell);
+            newCell.Init(sprite, _topPoint.position, _picturePopup, _premiumPopup, (cellId + 1) % 4 == 0 && cellId > 1);
+            newCell.transform.SetSiblingIndex(cellId);
+            newCell.OnOverScreen.Subscribe(async _ =>
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    LoadNewCell().Forget();
+                    await LoadNewCell();
                 }
             });
         }
@@ -73,7 +77,7 @@ namespace Menu.Gallery
             ShowAll();
             for (int i = 0; i < _cells.Count; i++)
             {
-                if (i % 2 != 0)
+                if (i % 2 == 0)
                     _cells[i].gameObject.SetActive(false);
             }
         }
@@ -82,8 +86,8 @@ namespace Menu.Gallery
             ShowAll();
             for (int i = 0; i < _cells.Count; i++)
             {
-                if (i % 2 == 0)
-                    _cells[i].gameObject.SetActive(true);
+                if (i % 2 != 0)
+                    _cells[i].gameObject.SetActive(false);
             }
         }
         public void ShowAll()
