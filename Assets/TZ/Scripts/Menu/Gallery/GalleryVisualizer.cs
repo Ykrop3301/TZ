@@ -43,7 +43,7 @@ namespace Menu.Gallery
             Sprite sprite = null;
             try
             {
-                sprite = await _assetsProvider.LoadAsync<Sprite>("remote:" + $"http://data.ikppbb.com/test-task-unity-data/pics/{_cellsCount}.jpg");
+                sprite = await _assetsProvider.LoadAsync<Sprite>("remote:" + $"https://data.ikppbb.com/test-task-unity-data/pics/{_cellsCount}.jpg");
             }
             catch
             {
